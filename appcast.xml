@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Project Backuper</title>
+        <item>
+            <title>Version 1.01</title>
+            <sparkle:releaseNotesLink>https://marinadedduck.github.io/ProjectBackuper-releases/release-notes/1.01.html</sparkle:releaseNotesLink>
+            <pubDate>Fri, 22 May 2026 15:56:01 -0400</pubDate>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>1.01</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://marinadedduck.github.io/ProjectBackuper-releases/updates/ProjectBackuper-1.01.zip" length="6865748" type="application/octet-stream" sparkle:edSignature="GTdAidL/RUJo+C+k6MDNFk5a4l6JZbVmEqsWURtRF4p8N4frF1FwUsE5N44SE8Cpfwwei8ntj4wK+vvteZmyBA=="/>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,72 @@
+<html>
+<body style="font-family: -apple-system; font-size: 13px; color: #e5e5ea; background: #1c1c1e; margin: 16px;">
+
+<h3>What's New in 1.01</h3>
+<p>Polish release focused on safer destination handling and a friendlier
+settings experience.</p>
+<ul>
+  <li><b>New:</b> Click any column header in the Index Report to sort by
+    that column. Click again to reverse. Selection survives the resort.</li>
+  <li><b>New:</b> Settings window opens automatically when you launch
+    Project Backuper from Applications, Spotlight, or the Dock &mdash;
+    but stays quiet in the menu bar when started at login or after a
+    restart, so it doesn't pop a window in your face every time you
+    boot.</li>
+  <li><b>New:</b> The backup destination path is now clickable in
+    Settings &rarr; Setup. Click the path to choose a different folder;
+    the separate "Choose&hellip;" button only appears when no
+    destination has been set yet.</li>
+  <li><b>New:</b> Settings &rarr; Advanced has a <i>View Release Notes</i>
+    link that opens this page in your browser, so you can see what's in
+    each release whenever you want.</li>
+  <li><b>New:</b> The Sources table has a labeled "Enabled" column with
+    a tooltip explaining that unchecked folders are skipped on every
+    backup pass.</li>
+  <li><b>Safer:</b> The destination picker now blocks you from picking
+    a folder that overlaps a source (in either direction) &mdash; that
+    would cause Project Backuper to back up its own snapshots
+    recursively. Hard block, no override.</li>
+  <li><b>Safer:</b> If you pick a destination that already contains
+    snapshots from a different Project Backuper install, the app warns
+    you that continuing would garbage-collect that data on the next
+    retention pass. Default is Cancel.</li>
+  <li><b>Friendlier:</b> If the folder you pick isn't empty and isn't a
+    prior Project Backuper destination, the app offers to create a
+    <code>ProjectBackuper</code> subfolder inside it so your snapshots
+    don't mix with your other files.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.0 &mdash; Initial Release</h3>
+<p>First public release. Project Backuper is a menu-bar app that backs
+up Adobe project files (Premiere Pro, After Effects, Photoshop,
+Illustrator) on a schedule, with hardlink-based deduplication.</p>
+<ul>
+  <li><b>Snapshot history</b> with a Time Machine-style cadence
+    (30 min to 24 h). Every snapshot lives at
+    <code>&lt;destination&gt;/Snapshots/&lt;timestamp&gt;/</code> and
+    can be opened directly in Finder.</li>
+  <li><b>Real deduplication.</b> A single content-addressed object
+    store under <code>.projectbackuper/store/</code> holds each unique
+    file once. Snapshot folders are pure hardlink trees, so unchanged
+    files cost zero additional disk space.</li>
+  <li><b>"Last Backup" shortcut.</b> A symlink at the destination root
+    always points at the most recent snapshot.</li>
+  <li><b>Activity Log</b> window (menu bar &rarr; Show Activity Log) shows
+    every backup attempt &mdash; success, skip, failure, cancellation &mdash;
+    with timings, byte counts, and the resulting snapshot ID. CSV
+    export available.</li>
+  <li><b>LucidLink aware.</b> Detects LucidLink mounts and switches to
+    a metadata-light fast enumeration. Warns before using LucidLink as
+    a destination (hardlinks are unreliable there).</li>
+  <li><b>Pause control.</b> Pausing the schedule shows a dedicated
+    pause icon in the menu bar so the state is obvious at a glance.</li>
+  <li><b>Retention.</b> Choose between simple (keep last N) or tiered
+    (Time Machine-style hourly / daily / weekly).</li>
+  <li><b>Sparkle auto-updates</b> with EdDSA signing, plus a manual
+    <i>Check for Updates&hellip;</i> menu item.</li>
+</ul>
+
+</body>
+</html>
