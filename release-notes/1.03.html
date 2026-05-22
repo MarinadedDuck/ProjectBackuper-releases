@@ -1,0 +1,90 @@
+<html>
+<body style="font-family: -apple-system; font-size: 13px; color: #e5e5ea; background: #1c1c1e; margin: 16px;">
+
+<h3>What's New in 1.03</h3>
+<p>Big one: Project Backuper now works on NAS shares that don't support
+hardlinks (QNAP and Synology over SMB are the common cases).</p>
+<ul>
+  <li><b>New:</b> Symlink fallback for NAS destinations. When you pick a
+    destination, the app now probes whether the volume supports hardlinks.
+    If it does, nothing changes &mdash; you keep the original
+    hardlink-based behavior. If hardlinks aren't supported (SMB shares
+    on most NAS units), the app automatically falls back to relative
+    symbolic links instead. Same deduplication, same snapshot browsing,
+    same retention behavior &mdash; the snapshot folders just show files
+    with the small link-arrow badge in Finder.</li>
+  <li><b>New:</b> Destination picker tells you which link mode it picked,
+    via an info dialog when the symlink fallback kicks in. Settings &rarr;
+    Setup &rarr; the destination panel now also shows the current mode
+    ("Link mode: Hardlinks" or "Link mode: Symlinks (NAS-compatible)")
+    so you can confirm at a glance.</li>
+  <li><b>New:</b> If neither hardlinks nor symlinks work on the volume
+    you picked, the destination is refused with a clear error explaining
+    that Project Backuper needs at least one of them &mdash; usually a sign
+    that you should use NFS instead of SMB, or pick a local disk.</li>
+  <li><b>Internal:</b> The link-mode choice is persisted in
+    <code>&lt;destination&gt;/.projectbackuper/link-mode</code> (a tiny
+    text file containing <code>hardlink</code> or <code>symlink</code>).
+    Survives reboots and remounts. Edit by hand if you really need to.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.02</h3>
+<p>Small UX tweaks plus more sensible out-of-the-box defaults.</p>
+<ul>
+  <li><b>Changed:</b> The Simple retention setting is now a single-line
+    sentence &mdash; "Simple &mdash; Keep last [N] snapshots" with the
+    number editable inline next to the radio button. No more two-row
+    label-plus-stepper layout.</li>
+  <li><b>Changed:</b> The default backup schedule is now <i>Every 4 hours</i>
+    (was: Every hour). More reasonable for typical creative project
+    workflows.</li>
+  <li><b>Changed:</b> The default retention is now 40 snapshots (was: 24).
+    Combined with the 4-hour cadence, that's just under a week of history
+    out of the box.</li>
+  <li><b>Removed:</b> The "Every minute" and "Every 5 minutes" schedule
+    options &mdash; those were development-only affordances and shouldn't
+    have been in the released build.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.01</h3>
+<p>Polish release focused on safer destination handling and a friendlier
+settings experience.</p>
+<ul>
+  <li><b>New:</b> Click any column header in the Index Report to sort.</li>
+  <li><b>New:</b> Settings opens automatically when launched by the user;
+    stays quiet for login-item and post-restart resume.</li>
+  <li><b>New:</b> Clickable destination path replaces the "Choose&hellip;"
+    button once a destination is set.</li>
+  <li><b>New:</b> Advanced tab has a <i>View Release Notes</i> link.</li>
+  <li><b>New:</b> The Sources column header is now labeled "Enabled".</li>
+  <li><b>Safer:</b> Destination picker blocks folders that overlap a
+    source (recursive backups), warns on foreign Project Backuper data,
+    and offers a subfolder when the chosen folder isn't empty.</li>
+  <li><b>Fixed:</b> Sparkle auto-update wiring &mdash; v1.0 was missing
+    the appcast URL in its Info.plist.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.0 &mdash; Initial Release</h3>
+<p>First public release. Project Backuper is a menu-bar app that backs
+up Adobe project files (Premiere Pro, After Effects, Photoshop,
+Illustrator) on a schedule, with hardlink-based deduplication.</p>
+<ul>
+  <li>Snapshot history (30 min &ndash; 24 h cadence) with hardlink-based
+    deduplication via a content-addressed store.</li>
+  <li>"Last Backup" symlink at the destination root always points at
+    the most recent snapshot.</li>
+  <li>Activity Log with timings, byte counts, and snapshot IDs.</li>
+  <li>LucidLink-aware fast enumeration.</li>
+  <li>Pause control with dedicated menu-bar icon.</li>
+  <li>Simple and tiered retention policies.</li>
+  <li>Sparkle auto-updates with EdDSA signing.</li>
+</ul>
+
+</body>
+</html>
