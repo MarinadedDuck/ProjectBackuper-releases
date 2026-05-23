@@ -1,0 +1,91 @@
+<html>
+<body style="font-family: -apple-system; font-size: 13px; color: #e5e5ea; background: #1c1c1e; margin: 16px;">
+
+<h3>What's New in 1.04</h3>
+<p>Hotfix for the v1.03 symlink mode &mdash; project files now open directly
+from snapshot folders.</p>
+<ul>
+  <li><b>Fixed:</b> In symlink mode (used for NAS destinations that don't
+    support hardlinks), double-clicking a project file in a snapshot
+    folder used to show a generic "alias" icon and refuse to open in
+    Premiere / After Effects / Photoshop. macOS was inspecting the
+    symlink target &mdash; the file inside <code>.projectbackuper/store/</code>
+    &mdash; which had no extension. It couldn't determine the file type.
+    <br><br>
+    Now the store object's filename includes the original extension
+    (e.g. <code>store/ab/abcd1234&hellip;.prproj</code> instead of
+    <code>store/ab/abcd1234&hellip;</code>), so the symlink resolves to a
+    target with a recognizable UTI. Double-click works normally.
+    Hardlink mode is unaffected, but store filenames are now consistent
+    across both modes.</li>
+  <li><b>Note for existing NAS users:</b> Your store objects from v1.03
+    will become orphans after the first v1.04 backup pass (the new pass
+    re-copies under the new naming). The next retention run will GC
+    them automatically &mdash; no manual cleanup needed. Your store will
+    roughly double in size briefly and then return to normal.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.03</h3>
+<p>NAS-compatibility release: Project Backuper now works on SMB shares
+that don't support hardlinks (QNAP and Synology over SMB).</p>
+<ul>
+  <li><b>New:</b> Symlink fallback for destinations that reject
+    <code>link(2)</code>. Picker probes at destination-pick time and falls
+    back to relative symbolic links automatically. Info dialog tells you
+    when the fallback engages; Settings &rarr; Setup shows the current link
+    mode under the destination path.</li>
+  <li><b>New:</b> If neither hardlinks nor symlinks work on the volume,
+    the destination is refused with a clear error.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.02</h3>
+<ul>
+  <li><b>Changed:</b> Simple retention picker is now an inline single
+    line: "Simple &mdash; Keep last [N] snapshots".</li>
+  <li><b>Changed:</b> Default schedule bumped to Every 4 hours (was
+    Every hour); default retention to 40 snapshots (was 24).</li>
+  <li><b>Removed:</b> "Every minute" and "Every 5 minutes" test schedule
+    options.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.01</h3>
+<ul>
+  <li><b>New:</b> Click column headers in the Index Report to sort.</li>
+  <li><b>New:</b> Settings opens on user-initiated launch; stays quiet
+    for login-item / restart resume.</li>
+  <li><b>New:</b> Clickable destination path replaces the
+    "Choose&hellip;" button once a destination is set.</li>
+  <li><b>New:</b> Advanced tab has a <i>View Release Notes</i> link.</li>
+  <li><b>New:</b> The Sources column header is labeled "Enabled".</li>
+  <li><b>Safer:</b> Destination picker blocks source/destination overlap,
+    warns on foreign Project Backuper data, offers a subfolder when the
+    chosen folder isn't empty.</li>
+  <li><b>Fixed:</b> Sparkle auto-update wiring &mdash; v1.0 was missing the
+    appcast URL in its Info.plist.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.0 &mdash; Initial Release</h3>
+<p>First public release. Menu-bar app that backs up Adobe project files
+(Premiere Pro, After Effects, Photoshop, Illustrator) on a schedule,
+with hardlink-based deduplication.</p>
+<ul>
+  <li>Time Machine-style snapshot history (30 min &ndash; 24 h cadence).</li>
+  <li>Content-addressed store &mdash; unchanged files cost zero extra disk
+    space across snapshots.</li>
+  <li>"Last Backup" symlink at the destination root.</li>
+  <li>Activity Log with timings, byte counts, and snapshot IDs.</li>
+  <li>LucidLink-aware fast enumeration.</li>
+  <li>Simple and tiered retention policies.</li>
+  <li>Sparkle auto-updates with EdDSA signing.</li>
+</ul>
+
+</body>
+</html>
