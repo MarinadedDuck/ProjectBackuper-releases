@@ -1,0 +1,95 @@
+<html>
+<body style="font-family: -apple-system; font-size: 13px; color: #e5e5ea; background: #1c1c1e; margin: 16px;">
+
+<h3>What's New in 1.07</h3>
+<p>Restore Files gets a major upgrade: more access points, a snapshot
+picker, column sorting, and a brand-new <i>Restore to Original
+Location</i> action.</p>
+<ul>
+  <li><b>New &mdash; Menu bar entry:</b> "Restore Files&hellip;" is now in
+    the main Project Backuper menu (right under "Show Activity
+    Log&hellip;"). Opens the Restore window with no preselected snapshot
+    &mdash; defaults to the newest, picker at the top lets you switch.</li>
+  <li><b>New &mdash; Settings tab:</b> "Restore Files" is now a tab in
+    Settings, between File Types and Advanced. Same UI as the standalone
+    window. Use whichever surface fits your workflow.</li>
+  <li><b>New &mdash; Snapshot picker:</b> Both the window and the tab have a
+    "Snapshot:" dropdown at the top listing your last 200 snapshots,
+    newest first, with human-readable timestamps. Switch snapshots
+    without closing and reopening.</li>
+  <li><b>New &mdash; Column sorting:</b> Click any column header (File /
+    Size / Modified) in the Restore table to sort. Sizes and dates
+    default to descending (largest / newest first). Selection survives
+    the resort.</li>
+  <li><b>New &mdash; Restore to Original Location:</b> A second restore
+    button next to "Restore To&hellip;". Writes each selected file back
+    to the source folder it came from at backup time (e.g.
+    <code>/Volumes/8TB/Projects/&hellip;</code>). Existing files are never
+    overwritten &mdash; renamed " (1)", " (2)", &hellip; just like the
+    main Restore To flow. Useful for accidental-delete recovery
+    &mdash; one click puts the file back where it belongs.</li>
+  <li><b>Internal:</b> The Restore window and the Restore Files tab
+    are now the same view controller under the hood &mdash; one
+    implementation, two surfaces. Behavior is identical.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.06</h3>
+<ul>
+  <li><b>New:</b> Double-click a row in the Restore window &rarr; Quick
+    Open the file under its real name in the default app.</li>
+  <li><b>New:</b> "Open files after restoring" checkbox.</li>
+  <li><b>Safer:</b> Restore never overwrites existing files &mdash; auto-renames
+    " (1)", " (2)", &hellip;</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.05</h3>
+<ul>
+  <li><b>New:</b> "Restore Files&hellip;" button in the Activity Log.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.04</h3>
+<ul>
+  <li><b>Fixed:</b> Store objects keep their original file extension so
+    symlinks open in the right Adobe app.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.03</h3>
+<ul>
+  <li><b>New:</b> Automatic symlink fallback for NAS destinations.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.02</h3>
+<ul>
+  <li>Inline Simple retention picker, Every 4 hours default schedule,
+    40-snapshot default retention, dropped test schedule options.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.01</h3>
+<ul>
+  <li>Index Report sorting, settings auto-open on user launch,
+    clickable destination path, View Release Notes link, "Enabled"
+    column header, source/destination overlap protection,
+    Sparkle wiring fix.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.0 &mdash; Initial Release</h3>
+<p>Menu-bar Adobe project backup with hardlink-based deduplication,
+snapshot history, Activity Log, LucidLink-aware scanning,
+Sparkle auto-updates.</p>
+
+</body>
+</html>
