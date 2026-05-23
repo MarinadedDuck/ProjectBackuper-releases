@@ -1,0 +1,99 @@
+<html>
+<body style="font-family: -apple-system; font-size: 13px; color: #e5e5ea; background: #1c1c1e; margin: 16px;">
+
+<h3>What's New in 1.08</h3>
+<p>Hotfix for the Restore Files panel introduced in v1.05.</p>
+<ul>
+  <li><b>Fixed:</b> "Restore Files&hellip;" and "Restore to Original
+    Location" failed with <code>ditto: invalid option -- L</code>
+    on every file in v1.05 through v1.07. The implementation was
+    calling <code>/usr/bin/ditto -L</code>, but <code>ditto</code>
+    doesn't have a <code>-L</code> flag &mdash; that was a confusion with
+    <code>cp -L</code>. The copy path now uses
+    <code>FileManager.copyItem</code> against the symlink-resolved
+    source, which does exactly the right thing in both hardlink mode
+    and symlink mode: it follows the symlink (or just opens the file,
+    in hardlink mode) and writes a real regular file at the destination
+    with the original name.</li>
+  <li><b>Test coverage added:</b> Two new tests exercise the restore
+    copy primitive directly &mdash; one for a regular-file source, one
+    for a symlink-into-store source. The earlier broken implementation
+    slipped through because no test had ever called the restore copy
+    function. 36 &rarr; 38 tests, all green.</li>
+  <li><b>Updated:</b> The ⓘ Help button in the Restore view now shows
+    the working Terminal equivalent (<code>/bin/cp -RL</code>) instead
+    of the broken <code>ditto -L</code>.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.07</h3>
+<ul>
+  <li><b>New:</b> Menu bar → "Restore Files&hellip;" shortcut.</li>
+  <li><b>New:</b> "Restore Files" tab in Settings (same UI as the window).</li>
+  <li><b>New:</b> Snapshot picker at the top of the Restore view.</li>
+  <li><b>New:</b> Sortable columns (File / Size / Modified).</li>
+  <li><b>New:</b> "Restore to Original Location" &mdash; write each file
+    back to its source folder with " (1)"/" (2)" suffixes.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.06</h3>
+<ul>
+  <li>Double-click a row &rarr; Quick Open (opens with original name).</li>
+  <li>"Open files after restoring" checkbox.</li>
+  <li>Never overwrites &mdash; auto-renames " (1)", " (2)", &hellip;</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.05</h3>
+<ul>
+  <li>"Restore Files&hellip;" button in the Activity Log.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.04</h3>
+<ul>
+  <li>Store objects keep their file extension so symlinks open in
+    the right Adobe app.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.03</h3>
+<ul>
+  <li>Automatic symlink fallback for NAS destinations (QNAP / Synology
+    over SMB).</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.02</h3>
+<ul>
+  <li>Inline Simple retention picker.</li>
+  <li>Default schedule Every 4 hours; default retention 40 snapshots.</li>
+  <li>Removed test schedule options.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.01</h3>
+<ul>
+  <li>Index Report sorting, settings auto-open on user launch,
+    clickable destination path, View Release Notes link, "Enabled"
+    column header, source/destination overlap protection, fixed
+    Sparkle wiring.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.0 &mdash; Initial Release</h3>
+<p>Menu-bar Adobe project backup with hardlink-based deduplication,
+snapshot history, Activity Log, LucidLink-aware scanning,
+Sparkle auto-updates.</p>
+
+</body>
+</html>
