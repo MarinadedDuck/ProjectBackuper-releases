@@ -1,0 +1,84 @@
+<html>
+<body style="font-family: -apple-system; font-size: 13px; color: #e5e5ea; background: #1c1c1e; margin: 16px;">
+
+<h3>What's New in 1.05</h3>
+<p>You can now restore files from any snapshot directly from inside
+Project Backuper &mdash; no Terminal required.</p>
+<ul>
+  <li><b>New:</b> "Restore Files&hellip;" button in the Activity Log
+    window. Select any successful snapshot in the list, click the
+    button, and the new Restore window opens showing every file in that
+    snapshot with a checkbox. Pick what you want, click "Restore
+    To&hellip;", choose a destination folder, and the app writes the
+    selected files out as real regular files &mdash; with their original
+    filenames and folder structure preserved. Works in both hardlink
+    and symlink modes.</li>
+  <li><b>New:</b> Why this matters in symlink mode: when Project Backuper
+    falls back to symlinks (NAS destinations), Finder copies of project
+    files in a snapshot folder just give you a 1KB symlink, not the real
+    file. The Restore window resolves each symlink server-side using
+    <code>/usr/bin/ditto -L</code> so you always get a usable file.</li>
+  <li><b>New:</b> "ⓘ" Help button in the Restore window shows the
+    equivalent <code>ditto</code> command if you'd rather batch a restore
+    from Terminal or script it into something else.</li>
+  <li><b>New:</b> After a restore, a confirmation dialog offers "Show in
+    Finder" to jump straight to the restored files.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.04</h3>
+<p>Hotfix for v1.03 symlink mode &mdash; project files now open directly
+from snapshot folders.</p>
+<ul>
+  <li><b>Fixed:</b> Store objects keep the original file extension
+    (<code>store/ab/abcd&hellip;.prproj</code> instead of
+    <code>store/ab/abcd&hellip;</code>). Symlinks in snapshot folders now
+    resolve to a target macOS recognizes, so double-click opens in
+    Premiere / After Effects / Photoshop / Illustrator as expected.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.03</h3>
+<p>NAS-compatibility release: Project Backuper works on SMB shares
+that don't support hardlinks (QNAP and Synology over SMB).</p>
+<ul>
+  <li><b>New:</b> Automatic symlink fallback for destinations that
+    reject <code>link(2)</code>. Picker probes at destination-pick
+    time, falls back to relative symbolic links, surfaces the choice
+    in Settings &rarr; Setup as a "Link mode: …" label.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.02</h3>
+<ul>
+  <li><b>Changed:</b> Inline Simple retention picker.</li>
+  <li><b>Changed:</b> Default schedule Every 4 hours, default retention
+    40 snapshots.</li>
+  <li><b>Removed:</b> Test schedule options.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.01</h3>
+<ul>
+  <li><b>New:</b> Index Report sorting, click column headers.</li>
+  <li><b>New:</b> Settings opens on user-initiated launch only.</li>
+  <li><b>New:</b> Clickable destination path.</li>
+  <li><b>New:</b> Advanced tab &rarr; View Release Notes link.</li>
+  <li><b>Safer:</b> Source / destination overlap detection, foreign-PB
+    data warning, subfolder prompt.</li>
+  <li><b>Fixed:</b> Sparkle wiring &mdash; v1.0 was missing SUFeedURL.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.0 &mdash; Initial Release</h3>
+<p>First public release. Menu-bar Adobe project file backup with
+hardlink-based deduplication, Time Machine-style snapshot history,
+Activity Log, LucidLink-aware scanning, Sparkle auto-updates.</p>
+
+</body>
+</html>

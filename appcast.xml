@@ -3,6 +3,15 @@
     <channel>
         <title>Project Backuper</title>
         <item>
+            <title>Version 1.05</title>
+            <sparkle:releaseNotesLink>https://marinadedduck.github.io/ProjectBackuper-releases/release-notes/1.05.html</sparkle:releaseNotesLink>
+            <pubDate>Fri, 22 May 2026 23:20:20 -0400</pubDate>
+            <sparkle:version>8</sparkle:version>
+            <sparkle:shortVersionString>1.05</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://marinadedduck.github.io/ProjectBackuper-releases/updates/ProjectBackuper-1.05.zip" length="6968398" type="application/octet-stream" sparkle:edSignature="EPs4GEEV5FWM3P7ryVMO+SSS6dAMdqHNrp8Wk/KefQODQFHrhGCdb8rEeRRB3TFu+f2IEDaOf+1nNkbpOzGLAg=="/>
+        </item>
+        <item>
             <title>Version 1.04</title>
             <sparkle:releaseNotesLink>https://marinadedduck.github.io/ProjectBackuper-releases/release-notes/1.04.html</sparkle:releaseNotesLink>
             <pubDate>Fri, 22 May 2026 22:57:18 -0400</pubDate>
