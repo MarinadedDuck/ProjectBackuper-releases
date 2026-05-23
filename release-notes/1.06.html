@@ -1,0 +1,98 @@
+<html>
+<body style="font-family: -apple-system; font-size: 13px; color: #e5e5ea; background: #1c1c1e; margin: 16px;">
+
+<h3>What's New in 1.06</h3>
+<p>Three Restore Files improvements aimed squarely at the symlink-mode
+workflow where double-clicking from Finder makes Adobe apps see the
+store's hashed filename instead of the original.</p>
+<ul>
+  <li><b>New &mdash; Quick Open:</b> Double-click any row in the Restore
+    window to copy that one file into a managed caches folder and open
+    it with its default app. Premiere / After Effects / Photoshop /
+    Illustrator receive the file under its real name (e.g.
+    <code>Edit.prproj</code>), so the title bar, recent-files list, and
+    project window all show the right thing. The caches folder is
+    cleaned by macOS under disk pressure &mdash; you don't have to manage
+    it.</li>
+  <li><b>New &mdash; "Open files after restoring" checkbox</b> in the Restore
+    window. Tick it before clicking Restore To&hellip; and every restored
+    file opens with its default app once the copy finishes. (Asks for
+    confirmation above 5 files to avoid launching a horde of windows.)</li>
+  <li><b>Safer:</b> Restore now <i>never overwrites</i> existing files
+    at the chosen destination. Files with name collisions are
+    automatically renamed " (1)", " (2)", &hellip; following Finder's
+    "Duplicate" convention. The completion alert reports how many were
+    renamed so you can spot conflicts at a glance.</li>
+  <li><b>Hint surfaced:</b> The Restore window now shows a tip under
+    the table reminding you that double-click opens a file directly,
+    and the ⓘ help button has been expanded to cover the new behaviors
+    plus the equivalent <code>ditto</code> commands for Terminal users.</li>
+</ul>
+
+<p><b>Why this matters for the Adobe-name issue:</b> macOS resolves
+symlinks before handing the URL to the receiving app, so a
+double-click from a symlink-mode snapshot folder shows the resolved
+path (<code>store/ab/abcd&hellip;.prproj</code>) instead of
+<code>Edit.prproj</code>. There's no public API to override that.
+The fix is to always open the file from a real-file location with
+its original name &mdash; which is exactly what Quick Open and the
+post-restore auto-open do.</p>
+
+<hr>
+
+<h3>What's New in 1.05</h3>
+<ul>
+  <li><b>New:</b> "Restore Files&hellip;" button in the Activity Log.
+    Select a snapshot, pick the files you want, choose a destination,
+    get real files at their original names (works in both hardlink
+    and symlink modes).</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.04</h3>
+<ul>
+  <li><b>Fixed:</b> Store objects keep the original file extension so
+    symlinks resolve to a target macOS can identify &mdash; double-click
+    opens in the right Adobe app.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.03</h3>
+<ul>
+  <li><b>New:</b> Automatic symlink fallback for NAS destinations
+    (QNAP / Synology over SMB) that don't support hardlinks.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.02</h3>
+<ul>
+  <li>Inline Simple retention picker.</li>
+  <li>Default schedule Every 4 hours, default retention 40 snapshots.</li>
+  <li>Removed test schedule options.</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.01</h3>
+<ul>
+  <li>Index Report sorting.</li>
+  <li>Settings opens on user-initiated launch only.</li>
+  <li>Clickable destination path.</li>
+  <li>View Release Notes link in Advanced tab.</li>
+  <li>Sources column labeled "Enabled".</li>
+  <li>Source/destination overlap protection.</li>
+  <li>Fixed Sparkle wiring (v1.0 was missing SUFeedURL).</li>
+</ul>
+
+<hr>
+
+<h3>What's New in 1.0 &mdash; Initial Release</h3>
+<p>First public release. Menu-bar Adobe project file backup with
+hardlink-based deduplication, Time Machine-style snapshot history,
+Activity Log, LucidLink-aware scanning, Sparkle auto-updates.</p>
+
+</body>
+</html>
